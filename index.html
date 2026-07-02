@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon: the Holben "Helvetica" asterisk in International Klein Blue -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiNmYWY2ZWEiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1Ljc4IDk4LjEzKSBzY2FsZSgwLjEyOTggLTAuMTI5OCkiIGZpbGw9IiMwMDJGQTciIGQ9Ik0xNjggMzMyIDE3OSA0NjkgNzQgMzkxIDQwIDQ1MSAxNTYgNTA5IDQwIDU2OCA3NCA2MjggMTc5IDU0OSAxNjggNjg3SDIzNkwyMjUgNTQ5TDMzMCA2MjhMMzY0IDU2OEwyNDcgNTA5TDM2NCA0NTFMMzMwIDM5MUwyMjUgNDY5TDIzNiAzMzJaIi8+PC9zdmc+">
+
+<!-- ============================================================
+     EDIT THESE META TAGS (used for search engines + link previews)
+     ============================================================ -->
+<title>Shaun Holben</title>
+<meta name="description" content="Shaun Holben: operations, strategy, and product across blockchain, real estate, and design. A hand-built single page for my work, writing, and art.">
+<meta name="theme-color" content="#faf6ea">
+
+<!-- Social sharing (Open Graph + Twitter) -->
+<meta property="og:title" content="Shaun Holben">
+<meta property="og:description" content="Shaun Holben: operations, strategy, and product across blockchain, real estate, and design. A hand-built single page for my work, writing, and art.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shaun Holben">
+<meta property="og:locale" content="en_US">
+<!-- Once deployed, uncomment and set to your live URL + a 1200x630 preview image: -->
+<!-- <meta property="og:url" content="https://your-domain.com/"> -->
+<!-- <meta property="og:image" content="https://your-domain.com/preview.png"> -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shaun Holben">
+<meta name="twitter:description" content="Shaun Holben: operations, strategy, and product across blockchain, real estate, and design. A hand-built single page for my work, writing, and art.">
+
+<!-- Handwriting font for margin notes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Holben “Helvetica”, a custom cut of Archivo (a Helvetica-family grotesque),
+     narrowed ~3% on its width axis and set at a slightly custom weight:
+     the "3% rule" baked into the letterforms. Rename freely. */
+  @font-face {
+    font-family: "Holben Helvetica";
+    font-style: normal; font-weight: 400; font-display: swap;
+    src: url(data:font/woff2;base64,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) format("woff2");
+  }
+  @font-face {
+    font-family: "Holben Helvetica";
+    font-style: normal; font-weight: 600; font-display: swap;
+    src: url(data:font/woff2;base64,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) format("woff2");
+  }
+
+  :root {
+    --text: #000000;
+    --muted: #999;
+    --link: #0000FF;
+    --bg: #faf6ea;   /* Moleskine ivory, the paper (light) */
+    --ink: #002FA7; /* International Klein Blue, handwriting / annotations */
+    --grid: 5mm;                      /* Moleskine dot-grid spacing (~18.9px) */
+    --dot: rgba(60, 52, 36, 0.18);    /* faint dot-grid colour */
+    --dot-d: 0.35mm;                  /* dot diameter (within 0.3–0.4 mm) */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* benji.org defaults to light in all system modes; the night palette is
+       reached only by flipping the sun's light switch (no persistence). */
+    :root {
+      --text: #000000;
+      --muted: #999;
+      --link: #0000FF;
+      --bg: #faf6ea;
+    }
+  }
+
+  /* Night mode, strict five-colour set: every colour here is one of the five
+     originals. Black becomes the paper and Muted Off White becomes the text;
+     links (True Blue), muted notes (Gray) and the handwriting/drawings (IKB) all
+     stay exactly as in light mode, the two blues simply run dim on the black. */
+  :root[data-theme="night"] {
+    --text: #FAF6EA;                    /* Muted Off White, the light paper, now the text */
+    --bg: #000000;                      /* Black, the night paper */
+    --dot: rgba(250, 246, 234, 0.10);   /* faint Muted Off White dots */
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; color-scheme: light; overflow-x: hidden; }
+
+  body {
+    font-family: "Holben Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: var(--grid);                 /* one 5 mm row per line of type */
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0;
+    padding: calc(var(--grid) * 6) 24px calc(var(--grid) * 3 + 25.8vw);
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.45s ease, color 0.45s ease;
+  }
+
+  /* 5 mm dot grid on its own layer: it sits ABOVE the sky (clouds, sun and the
+     flight band, all at z -2) so the dots show through them, but BELOW the
+     in-flow text (which paints above any negative-z layer). */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(circle at center, var(--dot) calc(var(--dot-d) / 2), transparent calc(var(--dot-d) / 2 + 0.35px));
+    background-size: var(--grid) var(--grid);
+    background-position: calc(var(--grid) / 2) calc(var(--grid) / 2);  /* dots land on row lines */
+  }
+
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .updated {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  p { margin: 0 0 var(--grid); }
+
+  a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--muted);
+    transition: text-decoration-color 0.15s ease, color 0.45s ease;
+  }
+  a:hover { text-decoration-color: var(--text); }
+
+  a:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: calc(var(--grid) * 2) 0 var(--grid);
+  }
+
+  /* Sub-header within a section (e.g. "Academic" grouping the schools). */
+  .proj-subhead {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+    margin: var(--grid) 0 0;
+  }
+
+  .entry-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .entry-list li { margin: 0; }
+  .entry-list .year {
+    color: var(--muted);
+    display: inline-block;
+    min-width: 3.85em;
+    margin-right: 4px;
+  }
+  .note { color: var(--muted); }
+
+  /* Nested release / studio-project list under an entry. */
+  .art-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 calc(3.85em + 4px);
+  }
+  .art-list li { margin: 0; }
+  /* Nested years are always single years, so they get a tighter gutter than the
+     parent's (which must fit ranges like 2018–21). The block is indented so each
+     studio steps in beneath its school, with the year close to its title. */
+  .art-list .year { min-width: 2.6em; }
+
+  /* Collapsible school entries: a caret disclosure revealing the studio projects. */
+  .school > summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+  }
+  .school > summary::-webkit-details-marker { display: none; }
+  .school > summary:focus-visible {
+    outline: 1px dotted var(--muted);
+    outline-offset: 3px;
+  }
+  .school > summary .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-left: 5px solid var(--muted);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    transition: transform 0.18s ease, border-left-color 0.18s ease;
+  }
+  .school[open] > summary .caret { transform: rotate(90deg); }
+  .school > summary:hover .caret,
+  .school > summary:focus-visible .caret { border-left-color: var(--link); }
+
+  .clock {
+    color: var(--muted);
+    margin-top: calc(var(--grid) * 2);
+  }
+  /* "Beast Coast" flourish: strike "East" with a hand-drawn IKB line and write
+     "Beast" above it in the handwriting. Both pieces are absolutely positioned,
+     so they add no layout height to the clock line. */
+  .beast { position: relative; display: inline-block; }
+  .beast-strike {
+    position: absolute;
+    left: -2px;
+    width: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    height: 9px;
+    color: var(--ink);
+    overflow: visible;
+  }
+  .beast-word {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 1px;
+    transform: translateX(-50%) rotate(-4deg);
+    font-family: "Caveat", cursive;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.5em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Website Specifications is an easter egg: the whole section is collapsed by
+     default and unfolds from a caret on its heading. */
+  .specs-toggle { margin: calc(var(--grid) * 2) 0 0; }
+  .specs-toggle > summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+    cursor: pointer;
+    list-style: none;
+  }
+  .specs-toggle > summary::-webkit-details-marker { display: none; }
+  .specs-toggle > summary h2 { margin: 0; }
+  .specs-toggle > summary:focus-visible {
+    outline: 1px dotted var(--muted);
+    outline-offset: 4px;
+  }
+  .specs-toggle > summary .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--muted);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    transition: transform 0.18s ease, border-left-color 0.18s ease;
+  }
+  .specs-toggle[open] > summary .caret { transform: rotate(90deg); }
+  .specs-toggle > summary:hover .caret,
+  .specs-toggle > summary:focus-visible .caret { border-left-color: var(--link); }
+  .specs-toggle .palette { margin-top: var(--grid); }
+
+  /* "Read me" disclosure near the top: a small caret that opens a short note on
+     what this site is and why it exists. Mirrors the other caret toggles, with
+     the caret set AFTER the label. */
+  .readme-toggle { margin: 0 0 var(--grid); }
+  .readme-toggle > summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+    cursor: pointer;
+    list-style: none;
+    color: var(--muted);
+  }
+  .readme-toggle > summary::-webkit-details-marker { display: none; }
+  .readme-toggle > summary:focus-visible {
+    outline: 1px dotted var(--muted);
+    outline-offset: 4px;
+  }
+  .readme-toggle > summary:hover { color: var(--text); }
+  .readme-toggle > summary .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--muted);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    transition: transform 0.18s ease, border-left-color 0.18s ease;
+  }
+  .readme-toggle[open] > summary .caret { transform: rotate(90deg); }
+  .readme-toggle > summary:hover .caret,
+  .readme-toggle > summary:focus-visible .caret { border-left-color: var(--link); }
+  .readme-note { margin-top: var(--grid); color: var(--muted); }
+
+  /* Website Specifications: typeface + colour key */
+  .palette {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .palette li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+  }
+  .palette .swatch {
+    width: 13px;
+    height: 13px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    flex: none;
+  }
+  .palette .specimen {
+    flex: none;
+    width: 13px;
+    overflow: visible;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--text);
+  }
+  .palette .specimen-hand {
+    font-family: "Caveat", "Segoe Script", cursive;
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .palette .hex {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    min-width: 6.2em;
+  }
+  .palette .use { color: var(--muted); }
+
+  /* Expandable spec rows (typeface, link colour): summary + caret + note */
+  .palette li.spec-row {
+    display: block;
+    margin: 0;
+  }
+  .palette .spec-details summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .palette .spec-details summary::-webkit-details-marker { display: none; }
+  .palette .spec-details summary:focus-visible {
+    outline: 1px dotted var(--muted);
+    outline-offset: 3px;
+  }
+  .palette .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-left: 5px solid var(--muted);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    transition: transform 0.18s ease, border-left-color 0.18s ease;
+  }
+  .palette .spec-details[open] .caret { transform: rotate(90deg); }
+  .palette .spec-details summary:hover .caret,
+  .palette .spec-details summary:focus-visible .caret { border-left-color: var(--link); }
+  .palette .spec-note {
+    margin: 0 0 var(--grid) 114px; /* align under the name: specimen 13 + gap 10 + hex ~81 + gap 10 */
+    max-width: 30rem;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: var(--grid);
+  }
+  @media (max-width: 600px) {
+    .palette .spec-note { margin-left: 23px; }
+  }
+
+
+  /* Handwritten margin note + arrow */
+  /* Inline handwritten aside: the Caveat/IKB hand of the margin notes, but flowing
+     inline at the end of a sentence. line-height:1 keeps it from inflating the line. */
+  .hand-note {
+    font-family: "Caveat", "Segoe Script", cursive;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  /* Footnote asterisk tying the name to the opening line, set in the ink blue. */
+  .fn-mark { color: var(--ink); font-weight: 400; }
+
+  /* Bio pull-quote: set off by a vertical rule in the ink blue. The rule is drawn
+     as a pseudo-element that runs taller than the line (so it reads as a rule, not
+     a stray capital I) WITHOUT adding vertical padding, so the text keeps sitting
+     on the dot-grid exactly like the surrounding paragraphs. */
+  #bioQuote {
+    position: relative;
+    padding-left: 0.9em;
+  }
+  #bioQuote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -0.4em;
+    bottom: -0.4em;
+    width: 3px;
+    background: var(--ink);
+  }
+
+  .margin-note {
+    font-family: "Caveat", "Segoe Script", cursive;
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: var(--ink);
+    position: absolute;
+    transform: rotate(-2.5deg);
+    transform-origin: top left;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.45s ease;
+  }
+  .margin-note.ready { opacity: 1; }
+  /* Until a note is shown (ready), it can sit invisibly over other content
+     (e.g. the collapsed specs heading), so it must not intercept clicks. */
+  .margin-note:not(.ready) { pointer-events: none; }
+
+  /* Left-margin variant (tilts the other way; link inside is clickable) */
+  .margin-note-left {
+    transform: rotate(2deg);
+    transform-origin: top right;
+    pointer-events: auto;
+  }
+  .margin-note a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 47, 167, 0.45);
+    text-underline-offset: 2px;
+    pointer-events: auto;
+  }
+  .margin-note a:hover { text-decoration-color: var(--ink); }
+
+  /* Fallback when there's no room in the margin (narrow screens) */
+  .margin-note.inline {
+    position: static;
+    transform: rotate(-1.5deg);
+    width: auto !important;
+    max-width: 22rem;
+    margin: -6px 0 24px 8px;
+  }
+  .margin-note-left.inline { transform: rotate(1.5deg); }
+
+  .note-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+  }
+  .note-arrow path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.45s ease;
+  }
+
+  /* Hand-drawn sky (sun + clouds) in IKB ink, decorative */
+  .sky-clouds, .sky-sun {
+    position: absolute;
+    z-index: -2;
+    pointer-events: none;
+    color: var(--ink);
+    transition: color 0.45s ease;
+  }
+  /* Sun: top-right corner, on the very back layer (z-index -3) so the filled
+     clouds in front can drift over and occlude it. */
+  .sky-sun { top: 12px; right: 24px; width: 176px; opacity: 0.92; z-index: -3; }
+  /* The light switch: a transparent button laid exactly over the sun. The sun
+     sits below the dot layer, so it can't catch clicks itself. */
+  .theme-switch {
+    position: absolute;
+    top: 12px;
+    right: 24px;
+    width: 176px;
+    height: 176px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .theme-switch:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 10px;
+  }
+  .sun-rays { transition: opacity 0.45s ease; }
+  .sun-knob { transition: cx 0.4s ease; }
+  .sun-switch .lbl { transition: opacity 0.4s ease; }
+  .sun-switch .lbl-off { opacity: 0; }
+  /* Lights off: rays fade, disc stays as the moon, knob slides to off, label flips. */
+  :root[data-theme="night"] .sun-rays { opacity: 0; }
+  :root[data-theme="night"] .sun-knob { cx: 54px; }
+  :root[data-theme="night"] .sun-switch .lbl-on { opacity: 0; }
+  :root[data-theme="night"] .sun-switch .lbl-off { opacity: 1; }
+  /* Clouds: scattered across the top at varied sizes and heights. The flex row
+     spreads them horizontally (space-between); each cloud's margin-top sets its own
+     altitude, so they drift at different levels instead of sitting on one line.
+     Every margin-top is >= ~64px, keeping all cloud tops at or below the sun's
+     midpoint (~62px), never above it. overflow:visible so strokes never clip. */
+  .sky-clouds {
+    top: 0;
+    left: 24px;
+    right: 140px;            /* leave the top-right clear for the sun */
+    height: 116px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    opacity: 0.9;
+  }
+  .sky-clouds .cloud { display: block; width: auto; flex: none; overflow: visible; }
+  /* Every cloud is filled with the page colour (like the foreground flight-path
+     clouds), so each reads as a solid shape with the dot grid sitting on top, and
+     nearer clouds cleanly occlude farther ones when the layout compresses at
+     narrow widths. The IKB stroke stays as the drawn outline. */
+  .sky-clouds .cloud path { fill: var(--bg); }
+  /* size (height) + altitude (margin-top), each one unique */
+  /* Cloud 1 (cloud-a): big, high, spills off the left edge, with a small
+     COMPANION cloud tucked BEHIND its upper-right corner. cloud-a-main is painted
+     in front of the companion (both filled), so it occludes the companion where
+     they overlap; only the companion's upper-right peeks out (depth). */
+  .sky-clouds .cloud-a-wrap { position: relative; margin-top: 62px; transform: translateX(-72px); }
+  .sky-clouds .cloud-a-main { position: relative; display: block; height: 72px; width: auto; overflow: visible; }
+  .sky-clouds .cloud-a-companion { position: absolute; height: 74px; right: -46px; top: -20px; width: auto; overflow: visible; }
+  .sky-clouds .cloud-b { height: 22px; margin-top: 86px; }   /* tiny,   low   */
+  .sky-clouds .cloud-c { height: 34px; margin-top: 70px; }   /* single mid cloud */
+  /* Cloud 4 (cloud-d) is a CLUSTER: a wide cumulus (back) with a smaller cloud
+     (front) hanging off its lower-right. The front cloud is painted over the back
+     one (both filled), so it occludes it and reads as a nearer, separate cloud. */
+  .sky-clouds .cloud-cluster { position: relative; }
+  .sky-clouds .cloud-cluster .cl-back  { display: block; width: auto; overflow: visible; }
+  .sky-clouds .cloud-cluster .cl-front { position: absolute; width: auto; overflow: visible; }
+  .sky-clouds .cloud-d-cluster { margin-top: 80px; }
+  .sky-clouds .cloud-d-cluster .cl-back  { height: 64px; }
+  .sky-clouds .cloud-d-cluster .cl-front { height: 44px; left: 130px; top: 26px; }
+  .sky-clouds .cloud-e { height: 46px; margin-top: 72px; transform: translateX(-52px); }   /* med-lg, high; shifted left to clear the sun */
+  @media (max-width: 720px) {
+    .sky-clouds { right: 130px; }
+    .sky-clouds .cloud-a-wrap { transform: translateX(-44px); }
+    .sky-clouds .cloud-a-main { height: 54px; }
+    .sky-clouds .cloud-a-companion { height: 60px; right: -36px; top: -14px; }
+    .sky-clouds .cloud-c { height: 30px; }
+    .sky-clouds .cloud-e { height: 40px; }
+    .sky-clouds .cloud-d-cluster .cl-back  { height: 52px; }
+    .sky-clouds .cloud-d-cluster .cl-front { height: 36px; left: 106px; top: 22px; }
+  }
+
+  /* Little plane towing a "Hello, World!" banner. It now lives in the flow
+     between the "Updated…" line and the first sentence, so it always sits in
+     that gap (clear of the sun). The band is full-bleed (100vw) so the plane
+     still flies the whole way across; overflow:hidden + html{overflow-x:hidden}
+     keep the off-screen plane from ever adding a horizontal scrollbar. */
+  .sky-flight {
+    position: relative;
+    z-index: -2;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: calc(var(--grid) * 2);
+    margin-top: calc(var(--grid) * 2);
+    margin-bottom: var(--grid);
+    overflow: visible;        /* foreground clouds extend beyond the band; html{overflow-x:hidden} still clips horizontally */
+    pointer-events: none;
+  }
+  .sky-plane {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 165px;
+    color: var(--ink);
+    opacity: 0.9;
+    animation: skywrite 28s linear infinite;
+  }
+  @keyframes skywrite {
+    from { transform: translateX(-185px); }   /* off the left edge */
+    to   { transform: translateX(100vw); }      /* off the right edge */
+  }
+  /* All motion the page can animate, switched off together. Placed after the
+     base rules above so it overrides them. */
+  @media (prefers-reduced-motion: reduce) {
+    .margin-note { transition: none; }
+    .sky-plane { animation: none; transform: translateX(40vw); }  /* park it in view */
+  }
+
+  /* Two larger clouds sitting low, IN the plane's flight path. They follow the
+     plane in the DOM (so they paint on top) and are filled with the page colour,
+     so the plane passes BEHIND them, hidden wherever it crosses. */
+  .sky-flight .fg-cloud {
+    position: absolute;
+    width: auto;
+    color: var(--ink);
+    overflow: visible;
+  }
+  .sky-flight .fg-cloud path { fill: var(--bg); }   /* occlude the plane behind */
+  /* Left cloud: anchored to the column's left margin (between the two leftmost
+     clouds), so it keeps its place as the window resizes. */
+  .sky-flight .fg-cloud-left  { height: 80px; top: -21px; left: calc((100vw - 640px) / 2 - 212px); }
+  /* Right cloud: below the sun, hanging about halfway off the right edge. */
+  .sky-flight .fg-cloud-right { height: 78px; top: 6px; right: -118px; }
+  @media (max-width: 920px) {
+    .sky-flight .fg-cloud { display: none; }   /* margins too tight here; they'd cover text */
+  }
+
+  /* ── Hand-drawn Bliss hill: the Windows XP horizon, in IKB ink, decorative. ──
+     A full-bleed band pinned to the foot of the page, answering the sky up top:
+     sky above, earth below. The silhouette is traced pixel-for-pixel from the
+     original photograph; the grass is grown in the script (like the note arrows),
+     graded big-in-front to small-at-the-crest for depth, every blade kept below
+     the horizon. Filled with the page colour, so the dot grid rides on top and it
+     occludes as cleanly as the clouds. */
+  .sky-hill {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -2;
+    pointer-events: none;
+    color: var(--ink);
+    line-height: 0;
+    transition: color 0.45s ease;
+  }
+  .sky-hill svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .sky-hill .hill-fill { fill: var(--bg); }
+
+  /* Signpost planted on the crest's left shoulder: a hand-lettered board naming
+     the hill, linking to the photograph's Wikipedia page. The hill script rides
+     it on the ridge at every width and keeps its board clear of the content. */
+  .bliss-sign {
+    position: absolute;
+    left: 0; top: 0;
+    z-index: 3;
+    width: 120px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.18s ease;
+  }
+  .bliss-sign svg { display: block; width: 120px; height: auto; overflow: visible; }
+  .bliss-sign .sign-post  { fill: var(--bg); stroke: var(--ink); stroke-width: 1.2; }
+  .bliss-sign .sign-board { fill: var(--bg); stroke: var(--ink); stroke-width: 1.3; }
+  .bliss-sign .sign-text {
+    font-family: "Caveat", "Segoe Script", cursive;
+    font-weight: 600;
+    font-size: 13px;
+    fill: var(--ink);
+  }
+  .bliss-sign:hover { transform: translateY(-1px) rotate(-0.6deg); }
+  .bliss-sign:hover .sign-board { fill: var(--ink); }
+  .bliss-sign:hover .sign-text  { fill: var(--bg); }
+  .bliss-sign:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+  @media (max-width: 540px) {
+    .sky-clouds, .sky-sun, .sky-flight, .theme-switch { display: none; }
+    .updated { margin-bottom: calc(var(--grid) * 2); }       /* restore the gap when the plane is hidden */
+  }
+
+  /* --- In-page routing: a hidden reading "page" swapped in via the URL hash.
+     Keeps the site a single self-contained file; #id reveals the page and hides
+     the home view (and its sky/hill/sign), the dot-grid ::before stays. --- */
+  .subpage { max-width: 40rem; margin: 0 auto; }
+  .subpage[hidden] { display: none; }
+  body.showing-subpage { padding-top: calc(var(--grid) * 3); padding-bottom: calc(var(--grid) * 3); }
+  body.showing-subpage > *:not(.subpage):not(script) { display: none !important; }
+
+  .subpage .backlink { color: var(--muted); margin: 0 0 calc(var(--grid) * 2); }
+  .subpage .backlink a { color: var(--muted); text-decoration-color: var(--muted); }
+  .subpage .backlink a:hover { color: var(--text); }
+  .subpage .doc-head { margin: 0 0 calc(var(--grid) * 2); }
+  .subpage .doc-meta { color: var(--muted); margin: 0; }
+  .subpage .doc-title { font-size: 1.5em; font-weight: 600; line-height: calc(var(--grid) * 1.5); letter-spacing: -0.02em; margin: var(--grid) 0; }
+  .subpage .doc-subtitle { color: var(--ink); margin: 0 0 var(--grid); }
+  .subpage h2 { font-size: 16px; font-weight: 600; color: var(--ink); margin: calc(var(--grid) * 2) 0 var(--grid); }
+  .subpage p, .subpage li { text-wrap: pretty; }
+  .subpage h3 { font-size: 15px; font-weight: 600; margin: var(--grid) 0 0; }
+  .subpage h3 + p { margin-top: 0; }
+  .subpage .implications { padding-left: 1.6em; }
+  .subpage ul { margin: 0 0 var(--grid); padding-left: 1.3em; }
+  .subpage li { margin: 0; }
+  .subpage li::marker { color: var(--muted); }
+  .subpage ol.refs { list-style: decimal; padding-left: 1.6em; margin: 0; }
+  .subpage ol.refs li { margin: 0 0 var(--grid); padding-left: 0.25em; }
+  .subpage ol.refs li:last-child { margin-bottom: 0; }
+  .subpage sup.fnref { line-height: 0; font-size: 0.72em; }
+  .subpage sup.fnref a { color: var(--ink); text-decoration: none; padding: 0 0.1em; }
+  .subpage sup.fnref a:hover { text-decoration: underline; text-decoration-color: var(--ink); }
+  .subpage .backref { margin-left: 0.35em; color: var(--muted); text-decoration: none; }
+  .subpage .backref:hover { color: var(--ink); }
+  .subpage li:target { background: rgba(0, 47, 167, 0.08); }
+  .subpage .doc-foot { color: var(--muted); margin: calc(var(--grid) * 3) 0 0; }
+  .subpage .doc-foot a { color: var(--muted); text-decoration-color: var(--muted); }
+  .subpage .doc-foot a:hover { color: var(--text); }
+</style>
+</head>
+
+<body>
+
+<!-- hand-drawn sky (decorative, IKB ink) -->
+<div class="sky-clouds" aria-hidden="true">
+  <div class="cloud cloud-a-wrap" aria-hidden="true">
+    <svg class="cloud-a-companion" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -0.5 79.8 44.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 10.2 36.4 A 13.4 13.4 0 1 1 18.2 12.5 A 23.0 23.0 0 0 1 56.2 13.0 A 13.4 13.4 0 1 1 68.0 37.0 Q 38.9 39.9 10.2 36.4 Z" vector-effect="non-scaling-stroke"/></svg>
+    <svg class="cloud-a-main" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -3.0 159.5 66.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 17.3 55.7 A 15.5 15.5 0 1 1 19.2 25.4 A 25.3 25.3 0 0 1 50.7 13.0 A 34.9 34.9 0 0 1 102.8 13.6 A 23.3 23.3 0 0 1 133.7 23.6 A 15.0 15.0 0 1 1 137.9 55.5 Q 77.6 59.2 17.3 55.7 Z" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <svg class="cloud cloud-b" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -0.5 79.8 44.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 10.2 36.4 A 13.4 13.4 0 1 1 18.2 12.5 A 23.0 23.0 0 0 1 56.2 13.0 A 13.4 13.4 0 1 1 68.0 37.0 Q 38.9 39.9 10.2 36.4 Z" vector-effect="non-scaling-stroke"/></svg>
+  <svg class="cloud cloud-c" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -1.4 119.3 46.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 7.9 37.4 A 15.7 15.7 0 1 1 24.6 10.8 A 23.0 23.0 0 0 1 55.5 8.4 A 22.7 22.7 0 0 1 89.3 11.1 A 16.7 16.7 0 1 1 110.1 36.3 Q 58.7 40.9 7.9 37.4 Z" vector-effect="non-scaling-stroke"/><circle cx="52" cy="20" r="2.2" fill="currentColor" stroke="none"/><circle cx="64" cy="20" r="2.2" fill="currentColor" stroke="none"/><path d="M 51 25 Q 58 30.5 65 25" style="fill:none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+  <div class="cloud cloud-cluster cloud-d-cluster" aria-hidden="true">
+    <svg class="cl-back" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -1.3 198.9 63.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 17.1 54.0 A 15.5 15.5 0 1 1 20.7 22.4 A 25.4 25.4 0 0 1 50.2 16.6 A 33.3 33.3 0 0 1 95.7 8.4 A 35.5 35.5 0 0 1 140.5 12.6 A 26.2 26.2 0 0 1 175.1 24.3 A 14.4 14.4 0 1 1 179.1 53.8 Q 97.7 57.5 17.1 54.0 Z" vector-effect="non-scaling-stroke"/></svg>
+    <svg class="cl-front" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -2.9 109.7 47.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 11.2 37.0 A 13.5 13.5 0 1 1 20.1 10.6 A 23.2 23.2 0 0 1 54.6 6.3 A 24.1 24.1 0 0 1 87.0 14.1 A 13.4 13.4 0 1 1 97.1 37.5 Q 54.6 40.5 11.2 37.0 Z" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <svg class="cloud cloud-e" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -3.3 133.7 56.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 11.3 45.7 A 18.4 18.4 0 1 1 25.7 11.2 A 29.5 29.5 0 0 1 68.1 7.3 A 29.3 29.3 0 0 1 108.3 13.6 A 15.9 15.9 0 1 1 112.3 46.0 Q 61.7 49.2 11.3 45.7 Z" vector-effect="non-scaling-stroke"/></svg>
+</div>
+<svg class="sky-sun" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 86.1 57.3 C 86.0 60.8 85.8 65.1 84.1 68.4 C 82.5 71.6 78.8 74.2 76.4 76.7 C 74.0 79.1 72.6 82.0 69.5 83.1 C 66.5 84.2 61.9 83.8 58.0 83.2 C 54.0 82.7 49.2 81.6 45.9 79.8 C 42.7 78.0 40.3 75.3 38.5 72.5 C 36.8 69.7 36.2 66.3 35.4 62.9 C 34.6 59.5 33.2 55.5 33.7 52.0 C 34.2 48.6 36.1 44.9 38.5 42.3 C 40.9 39.7 44.7 38.0 47.9 36.3 C 51.2 34.5 54.7 32.2 57.9 31.8 C 61.1 31.5 63.8 33.0 67.2 34.3 C 70.5 35.5 75.1 37.2 78.0 39.4 C 81.0 41.6 83.5 44.6 84.9 47.6 C 86.2 50.6 86.2 53.8 86.1 57.3 Z"/>
+  <path d="M 85.1 57.6 C 84.9 61.2 83.9 65.2 82.6 68.5 C 81.2 71.7 79.3 74.8 77.1 77.1 C 74.9 79.4 72.2 81.3 69.1 82.4 C 66.0 83.5 61.9 84.2 58.5 83.8 C 55.0 83.4 51.8 81.8 48.5 80.1 C 45.1 78.5 40.6 76.6 38.4 73.9 C 36.2 71.3 36.3 67.8 35.5 64.2 C 34.7 60.5 32.9 55.6 33.5 52.0 C 34.1 48.4 36.8 45.4 39.3 42.7 C 41.8 40.0 45.5 37.6 48.6 35.9 C 51.8 34.3 55.2 32.9 58.2 32.6 C 61.3 32.3 63.7 33.1 66.9 34.0 C 70.1 34.8 74.8 35.6 77.6 37.7 C 80.3 39.8 82.3 43.3 83.6 46.6 C 84.8 49.9 85.3 53.9 85.1 57.6 Z" stroke-width="1.4" opacity="0.85"/>
+  <g class="sun-rays">
+    <path d="M 95.8 58.4 Q 105.1 59.8 114.5 58.5 M 91.2 76.8 Q 94.3 78.6 97.5 80.6 M 76.7 89.4 Q 82.3 97.6 86.0 106.9 M 60.1 92.1 Q 59.9 96.0 60.1 99.9 M 44.2 88.1 Q 39.3 94.7 36.6 102.4 M 30.4 74.3 Q 26.6 77.6 21.8 79.0 M 26.3 57.7 Q 19.2 56.5 12.1 57.6 M 30.2 41.7 Q 26.0 38.1 20.7 36.5 M 41.2 26.6 Q 37.6 19.6 33.1 13.1 M 59.1 21.5 Q 60.5 18.3 59.0 15.1 M 78.1 28.9 Q 81.6 21.3 86.8 14.8 M 88.5 40.4 Q 91.6 38.9 94.3 36.9"/>
+  </g>
+  <g class="sun-switch" aria-hidden="true" transform="translate(0 11.4)">
+    <rect x="48" y="41" width="24" height="11" rx="5.5"/>
+    <circle class="sun-knob" cx="66" cy="46.5" r="3.7" fill="currentColor" stroke="none"/>
+    <text class="lbl lbl-on" x="55" y="46.5" text-anchor="middle" dominant-baseline="central" font-family="Caveat, cursive" font-weight="600" font-size="7" fill="currentColor" stroke="none">on</text>
+    <text class="lbl lbl-off" x="65" y="46.5" text-anchor="middle" dominant-baseline="central" font-family="Caveat, cursive" font-weight="600" font-size="7" fill="currentColor" stroke="none">off</text>
+  </g>
+</svg>
+
+<button id="themeToggle" class="theme-switch" type="button" aria-label="Switch between light and night mode" aria-pressed="false"></button>
+
+
+<main>
+
+
+  <!-- ============================================================
+       YOUR NAME + LAST UPDATED
+       ============================================================ -->
+  <h1>Shaun Holben<span class="fn-mark">*</span></h1>
+  <p class="updated">Updated Jun 29, 2026</p>
+
+  <!-- little plane towing a Hello, World! banner, flying between the lines -->
+  <div class="sky-flight" aria-hidden="true">
+<svg class="sky-plane" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 201 26.5 L 168 19 M 201 26.5 L 168 43"/>
+  <path d="M 168 18 L 22 18 Q 13 18 14 25 Q 11 31 14 37 Q 13 44 22 44 Q 60 47 100 44 Q 134 41 168 44 Z"/>
+  <path d="M 207 23 C 220 19 244 19 252 24 C 256 25 256 28 252 29 C 244 33 220 33 207 29 C 204 28 204 24 207 23 Z"/>
+  <path d="M 216 19.5 L 246 19.5 L 243 22.2 L 219 22.2 Z"/>
+  <path d="M 223 22.2 L 224 23.4 M 240 22.2 L 238 23.4"/>
+  <path d="M 211 21.5 L 206 11 L 216 20.5"/>
+  <path d="M 205 25.5 L 198 24.5 L 205 23.5"/>
+  <path d="M 224 32.5 L 222 39 M 236 32.5 L 238 39"/>
+  <circle cx="221.5" cy="40.5" r="2.1"/><circle cx="238.5" cy="40.5" r="2.1"/>
+  <path d="M 256 18.5 C 261 22 261 30 256 33.5"/>
+  <circle cx="255" cy="26" r="1.2" fill="currentColor"/>
+  <text x="91" y="36" text-anchor="middle" stroke="none" fill="currentColor" font-family="Caveat, cursive" font-weight="600" font-size="20">Hello, World!</text>
+</svg>
+<svg class="fg-cloud fg-cloud-left" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -2.6 168.0 66.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 17.3 55.8 A 15.6 15.6 0 1 1 20.5 21.1 A 25.8 25.8 0 0 1 59.1 13.2 A 36.8 36.8 0 0 1 112.2 13.5 A 25.2 25.2 0 0 1 140.7 20.5 A 15.9 15.9 0 1 1 146.3 54.9 Q 81.9 59.3 17.3 55.8 Z" vector-effect="non-scaling-stroke"/></svg>
+<svg class="fg-cloud fg-cloud-right" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2.0 -0.8 177.1 74.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20.3 66.0 A 18.5 18.5 0 1 1 25.4 26.3 A 30.1 30.1 0 0 1 55.3 18.3 A 41.4 41.4 0 0 1 119.4 18.7 A 26.6 26.6 0 0 1 149.4 28.1 A 17.0 17.0 0 1 1 153.2 65.9 Q 86.9 69.5 20.3 66.0 Z" vector-effect="non-scaling-stroke"/></svg>
+</div>
+
+  <details class="readme-toggle">
+    <summary>Read me<span class="caret" aria-hidden="true"></span></summary>
+    <div class="readme-note">
+      <p>This is my personal and professional site, a repository for the disparate work, art, and writing I make, plus a short bio and a few notes on how I think about building things. Part catch-all, part brain dump, part business card that got a little out of hand.</p>
+      <p>It&rsquo;s a single self-contained HTML file, put together with no templates or site builder, and a place I use to experiment with web design the way I use a sketchbook. The sky, the hill, the custom typeface, and the notes in the margins were all made from scratch, so it&rsquo;s as much a craft project as a r&eacute;sum&eacute;. It&rsquo;ll keep changing, so treat anything here as a work in progress.</p>
+    </div>
+  </details>
+
+  <!-- ============================================================
+       BIO: write a few short paragraphs. Link things with
+       <a href="https://...">like this</a>.
+       ============================================================ -->
+  <p><span class="fn-mark">*</span>I was born in Allentown (PA), but have &ldquo;lived&rdquo; in Philadelphia (PA), Cambridge (MA), New York (NY), Rome (Italy), and <span id="bhamAnchor">Birmingham</span> (AL). <span class="hand-note">(but not necessarily in that sequential order)</span></p>
+
+  <!-- Handwritten margin note pointing at Birmingham -->
+  <div class="margin-note" id="bhamNote">A surprisingly wonderful place to live, especially for someone from the Northeast who knew nothing about it and moved there on 13 days&rsquo; notice as part of my <a href="https://en.wikipedia.org/wiki/Venture_for_America">Venture for America</a> Fellowship.....</div>
+  <svg class="note-arrow" id="bhamArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="bhamArrowPath" d=""></path></svg>
+
+  <p>I currently work across operations, strategy, product, and capital fundraising, helping founders and teams get from a rough idea to a real, shipped thing, with a maybe-unhealthy attention to craft and clarity. These days that mostly means a handful of blockchain startups and organizations, plus a venture capital firm. I&rsquo;m cross-disciplinary by nature, and I&rsquo;ve filled a lot of roles across the blockchain, real estate, architecture, and property technology industries.</p>
+
+  <p>I spend the rest of my time building and backing things I genuinely care about: lately that&rsquo;s pulled me toward AI, fintech, marketplaces, online communities, and design tools. I&rsquo;m drawn to products that take the friction out of work, give people room to make things, and bring them together rather than apart, especially the ambitious, start-from-nothing kind that focus on the details.</p>
+
+  <p>I have been active in Bitcoin and blockchain since 2017, and I&rsquo;m especially interested in what the technology can do for real-world assets. I also write for blockchain-focused publications and online figures in the space. <span class="hand-note">(though a lot of what I do there is anonymous or pseudonymous)</span></p>
+
+  <p id="bioArch">I originally trained as an architect, completing my undergraduate degree at <a href="https://www.temple.edu/">Temple University</a>, the Design Discovery program at <a href="https://www.gsd.harvard.edu/">Harvard University&rsquo;s GSD</a>, and my master&rsquo;s at the <a href="https://www.upenn.edu/">University of Pennsylvania</a>. I&rsquo;m no longer one, though I still occasionally design buildings, and I care as much as ever about the built environment: urbanism, placemaking, and the potential to build something better. My research, in particular, looks at how the environments we build feed the loneliness and isolation epidemic of modern life. These days I consider myself more of a &ldquo;<span id="builderAnchor">builder</span>.&rdquo; As Virgil Abloh once said:</p>
+
+  <!-- ============================================================
+       "BUILDER" DEFINITION: handwritten left-margin annotation that
+       points at the word "builder" above.
+       ============================================================ -->
+  <div class="margin-note margin-note-left" id="builderNote">I believe a builder (in the <a href="https://x.com/a16z/status/2016994954422407300">sense Marc Andreessen describes</a>) is someone who makes things.....</div>
+  <svg class="note-arrow" id="builderArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="builderArrowPath" d=""></path></svg>
+
+  <p id="bioQuote">&ldquo;Young architects can change the world by not building buildings.&rdquo;</p>
+
+  <p>I can be reached via <a href="mailto:shaunholben@gmail.com">email</a>. You can also find me on <a href="https://www.instagram.com/shaunholben/">Instagram</a>
+     or <a href="https://www.linkedin.com/in/shaunholben/">LinkedIn</a>,
+     but not <span id="xAnchor"><svg viewBox="0 0 24 24" role="img" aria-label="X" style="width:0.95em;height:0.95em;vertical-align:-0.12em;" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153Zm-1.161 19.49h2.039L6.486 3.24H4.298l13.442 17.403Z"/></svg></span>.</p>
+
+  <!-- Handwritten margin note pointing at "X" -->
+  <div class="margin-note" id="xNote">(.....because I&rsquo;m anon there.)</div>
+  <svg class="note-arrow" id="xArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="xArrowPath" d=""></path></svg>
+
+  <!-- ============================================================
+       SELECTED PROJECTS: your work. Each item: name + short note.
+       Delete this whole section if unused.
+       ============================================================ -->
+  <h2>Selected Projects</h2>
+  <h3 class="proj-subhead">Personal/Professional</h3>
+  <ul class="entry-list">
+    <li><span class="year">2026&ndash;</span><a href="https://nationalize-strategy.com/">Nationalize Strategy</a></li>
+    <li><span class="year">2026&ndash;</span>An IRL business <span class="note">(more information coming soon)</span></li>
+    <li><span class="year">2025&ndash;</span>A New Venture <span class="note">(being built in stealth)</span></li>
+    <li><span class="year">2020</span><a href="https://www.barnesandnoble.com/w/milk-and-covfefe-shaun-holben/1137947854">Milk and Covfefe</a></li>
+    <li>
+      <span class="year">2018&ndash;</span>Peripheral Vision(s)* <span class="note">(the ongoing &ldquo;brand&rdquo; I release my art under.....)</span>
+      <ul class="art-list">
+        <!-- Add each release: year + title, plain text for now. -->
+        <li><span class="year">xxxx</span>(Projects coming soon)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="proj-subhead">Academic</h3>
+  <!-- Academic design work, grouped by school. Fill each list with year + title;
+       link the title once the work is hosted online. -->
+  <ul class="entry-list">
+    <li>
+      <details class="school">
+        <summary><span class="year">2018&ndash;21</span>University of Pennsylvania<span class="caret" aria-hidden="true"></span></summary>
+        <ul class="art-list">
+          <li><span class="year">xxxx</span>(Projects coming soon)</li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details class="school">
+        <summary><span class="year">2014&ndash;18</span>Temple University<span class="caret" aria-hidden="true"></span></summary>
+        <ul class="art-list">
+          <li><span class="year">xxxx</span>(Projects coming soon)</li>
+        </ul>
+      </details>
+    </li>
+    <!-- Add more like: <li><span class="year">2025</span><a href="https://...">Project name</a></li> -->
+  </ul>
+
+  <!-- ============================================================
+       SELECTED WRITING: your posts. Delete this whole section if unused.
+       ============================================================ -->
+  <h2>Selected Writing</h2>
+  <ul class="entry-list">
+    <li style="letter-spacing:-0.03em"><span class="year">2020</span><a href="#architecture-of-capital">(M.Arch Thesis Proposal) The Architecture of Capital: Designing for a Bitcoin-Backed Future</a></li>
+  </ul>
+
+  <!-- ============================================================
+       WEBSITE SPECIFICATIONS: typeface + colours
+       ============================================================ -->
+  <details class="specs-toggle">
+    <summary><h2>Website UX/UI Specifications</h2><span class="caret" aria-hidden="true"></span></summary>
+  <ul class="palette">
+    <li class="spec-row">
+      <details class="spec-details">
+        <summary><span class="specimen" aria-hidden="true">Aa</span><span class="hex">420 &middot; 97</span><span class="name">Holben &ldquo;Helvetica&rdquo; <span class="use">(read more about the custom typeface I designed.....)</span><span class="caret" aria-hidden="true"></span></span></summary>
+        <p class="spec-note">Helvetica is proprietary and can&rsquo;t be freely embedded on the web, so the text you&rsquo;re reading isn&rsquo;t actually Helvetica. It&rsquo;s a custom cut made specifically for this site, built on Archivo (an open-source face in the same neo-grotesque lineage). The approach borrows from Virgil Abloh&rsquo;s &ldquo;3% rule,&rdquo; his idea that altering something by roughly three percent is enough to make it your own while keeping it familiar. Here, Archivo was narrowed about 3% on its width axis and given bespoke weights, a small, deliberate change that leaves the face recognizably Helvetica-adjacent but unique to this website. (It&rsquo;s also why the name keeps &ldquo;Helvetica&rdquo; in quotation marks.)</p>
+      </details>
+    </li>
+    <li class="spec-row">
+      <details class="spec-details">
+        <summary><span class="specimen specimen-hand" aria-hidden="true">Aa</span><span class="hex">500 &middot; 600</span><span class="name">Caveat <span class="use">(handwritten margin notes..... whose handwriting is it?)</span><span class="caret" aria-hidden="true"></span></span></summary>
+        <p class="spec-note">The handwritten notes in the margins (and the plane&rsquo;s &ldquo;Hello, World!&rdquo; banner) are set in Caveat, a handwriting typeface by Pablo Impallari of Impallari Type in Rosario, Argentina, commissioned by Google and free through Google Fonts. It uses OpenType contextual alternates, so a letter changes shape a little depending on where it falls in a word, the way real handwriting never repeats itself exactly. Here it&rsquo;s set in International Klein Blue, so the notes read as if they were jotted into the margins by hand.</p>
+      </details>
+    </li>
+    <li><span class="swatch" style="background:#FAF6EA"></span><span class="hex">#FAF6EA</span><span class="name">Muted Off White <span class="use">(Moleskine notebook paper by &ldquo;day,&rdquo; the body text by &ldquo;night&rdquo;)</span></span></li>
+    <li><span class="swatch" style="background:#999999"></span><span class="hex">#999999</span><span class="name">Gray <span class="use">(dates, years &amp; muted notes but no cool explanation. Just Gray.)</span></span></li>
+    <li class="spec-row">
+      <details class="spec-details">
+        <summary><span class="swatch" style="background:#000000"></span><span class="hex">#000000</span><span class="name">Black <span class="use">(body text by &ldquo;day,&rdquo; paper by &ldquo;night&rdquo;..... how black is the blackest black?)</span><span class="caret" aria-hidden="true"></span></span></summary>
+        <p class="spec-note">On a screen, #000000 is as black as it gets: pure black, the floor of the color space. In the physical world, the &ldquo;blackest black&rdquo; has been a genuine arms race. Anish Kapoor secured exclusive artistic rights to Vantablack, the light-trapping nanotube coating, so artist <a href="https://news.artnet.com/art-world/stuart-semple-anish-kapoor-vantablack-alternative-2386510">Stuart Semple</a> answered by making his own super-blacks available to every artist except Kapoor. His latest, Black 4.0, swallows about 99.96% of visible light, rivaling Vantablack itself. The text you&rsquo;re reading just borrows the on-screen version of that idea.</p>
+      </details>
+    </li>
+    <li class="spec-row">
+      <details class="spec-details">
+        <summary><span class="swatch" style="background:#0000FF"></span><span class="hex">#0000FF</span><span class="name">True Blue <span class="use">(hyperlinks &amp; interactive elements..... but why are they blue?)</span><span class="caret" aria-hidden="true"></span></span></summary>
+        <p class="spec-note">The <a href="https://www.inc.com/ava-levinson/why-are-hyperlinks-blue/91227997">story</a> behind the blue link is surprisingly simple: building the Mosaic browser in 1993, Marc Andreessen made hyperlinks blue largely because he liked it, finding it a &ldquo;nice, firm color&rdquo; that read clearly against the gray backgrounds and 256-color palettes of early monitors. Every blue link since traces back to that choice.</p>
+      </details>
+    </li>
+    <li><span class="swatch" id="ikbAnchor" style="background:#002FA7"></span><span class="hex">#002FA7</span><span class="name">International Klein Blue <span class="use">(handwritten annotations)</span></span></li>
+  </ul>
+  </details>
+
+  <!-- HANDWRITTEN LEFT-MARGIN NOTE + ARROW (International Klein Blue) -->
+  <div class="margin-note margin-note-left" id="ikbNote">Yves Klein mixed this exact blue and registered the formula as his own in 1960. You can&rsquo;t truly own a color, but he came close.....</div>
+  <svg class="note-arrow" id="ikbArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="ikbArrowPath" d=""></path></svg>
+
+  <!-- ============================================================
+       LIVE LOCAL TIME: set your timezone + city below in the script.
+       ============================================================ -->
+  <!-- Clock: #clockTime is refreshed every second by JS; the rest is static so
+       the flourish survives. "East" is struck through with a hand-drawn IKB line
+       and "Beast" is written above it (the Beast Coast). -->
+  <p class="clock" id="clock"><span id="clockTime"></span> on The <span class="beast">East<svg class="beast-strike" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6 Q 26 3.4 50 5.2 T 98.5 4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg><span class="beast-word" aria-hidden="true">Beast</span></span> Coast of the United States</p>
+
+</main>
+
+<!-- hand-drawn Bliss hill (decorative, IKB ink): the Windows XP horizon, full-bleed
+     at the foot of the page. Outline traced from the original photograph; the grass
+     is grown in the script below. -->
+<div class="sky-hill" aria-hidden="true">
+  <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="hill-range" stroke-width="1" opacity="0.30" d="M 620 88 L 640 84 L 668 82 L 690 83 L 700 86 L 710 84 L 728 82 L 740 79 L 749 77 L 756 77 L 762 79 L 769 81 L 778 83 L 790 83 L 800 81" vector-effect="non-scaling-stroke"/>
+    <path class="hill-fill" d="M 0.0 54.2 C 6.2 53.3, 24.8 50.6, 37.3 48.7 C 49.7 46.7, 61.7 44.4, 74.5 42.7 C 87.3 41.0, 101.2 39.3, 114.0 38.4 C 126.8 37.5, 138.8 37.8, 151.2 37.3 C 163.7 36.7, 175.7 35.6, 188.5 35.2 C 201.3 34.8, 215.2 34.8, 227.9 35.1 C 240.7 35.4, 252.8 36.2, 265.2 37.0 C 277.6 37.8, 289.7 38.9, 302.5 39.9 C 315.3 40.9, 329.1 41.8, 341.9 43.0 C 354.7 44.2, 366.8 45.6, 379.2 47.1 C 391.6 48.5, 403.7 50.0, 416.4 51.6 C 429.2 53.1, 443.1 54.8, 455.9 56.4 C 468.7 58.0, 480.7 59.4, 493.2 61.1 C 505.6 62.8, 517.6 64.7, 530.4 66.6 C 543.2 68.5, 557.1 70.7, 569.9 72.5 C 582.6 74.2, 594.7 75.3, 607.1 77.2 C 619.5 79.0, 631.6 81.9, 644.4 83.6 C 657.2 85.2, 671.1 85.7, 683.8 87.1 C 696.6 88.5, 708.7 90.2, 721.1 92.1 C 733.5 93.9, 745.6 96.4, 758.4 98.0 C 771.1 99.7, 791.2 101.5, 797.8 102.1 L 800 102.1 L 800 320 L 0 320 Z" vector-effect="non-scaling-stroke"/>
+    <path id="hillGrass" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+  </svg>
+</div>
+
+<!-- "Bliss (Windows XP)" signpost — a link out to the photograph's Wikipedia page,
+     planted on the crest by the hill script. -->
+<a id="blissSign" class="bliss-sign" href="https://en.wikipedia.org/wiki/Bliss_%28photograph%29"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="The &ldquo;Bliss&rdquo; Hill (Windows XP) — read about the photograph on Wikipedia">
+  <svg viewBox="0 0 120 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect class="sign-post" x="57.5" y="33.5" width="5" height="20.5" rx="1.4"/>
+    <rect class="sign-board" x="1.5" y="1.5" width="117" height="32" rx="3.5"/>
+    <text class="sign-text" text-anchor="middle">
+      <tspan x="60" y="14">The &ldquo;Bliss&rdquo; Hill</tspan>
+      <tspan x="60" y="28">(Windows XP)</tspan>
+    </text>
+  </svg>
+</a>
+
+
+  <!-- ============================================================
+       WRITING PAGE (in-page route): revealed at #architecture-of-capital
+       ============================================================ -->
+  <article class="subpage" id="architecture-of-capital" data-title="The Architecture of Capital &middot; Shaun Holben" hidden>
+<p class="backlink"><a href="#">Home</a></p>
+
+    <header class="doc-head">
+      <p class="doc-meta">Candidate: Shaun Holben<br>
+        Advisor: To Be Determined<br>
+        M.Arch (Master of Architecture) Thesis Proposal<br>
+        The University of Pennsylvania, Stuart Weitzman School of Design<br>
+        Academic Year: 2020&ndash;2021</p>
+      <h1 class="doc-title">The Architecture of Capital:<br>Designing for a Bitcoin-Backed Future</h1>
+      <p class="doc-subtitle">Linking innovative finance to design quality and creative control in development.</p>
+    </header>
+
+    <h2>Introduction</h2>
+    <p>Bitcoin, with its unique properties as a scarce, digital, and globally recognized asset, has already begun reshaping the financial landscape. Yet, its potential to transform real estate development remains largely unexplored. My thesis proposes a framework for integrating Bitcoin into real estate development financing, creating a new capital structure that leverages Bitcoin&rsquo;s long-term appreciation potential and the stability of traditional property assets.</p>
+
+    <h2>Research Objective</h2>
+    <p>The goal of this thesis is to design a hybrid collateral model where Bitcoin serves as a percentage of the collateral package for development loans. By combining Bitcoin with traditional real estate assets, developers can unlock new sources of capital, hedge against inflation, and maintain exposure to Bitcoin&rsquo;s upside while still advancing real-world projects. This approach bridges the two historically separate markets of digital assets and physical real estate into a unified financing tool.</p>
+
+    <h2>Literature Review</h2>
+    <p>Research on Bitcoin&rsquo;s financial properties before 2020 provides a foundation for exploring its role in real estate. Several studies have examined Bitcoin&rsquo;s potential as a hedge or safe-haven asset, with mixed results but clear indications of its low correlation with traditional assets (Baur, Hong, &amp; Lee, 2018)<sup class="fnref"><a id="cite-1" href="#ref-1">1</a></sup>. This characteristic suggests that Bitcoin could enhance portfolio diversification when added to conventional collateral packages.</p>
+    <p>Additionally, work on real estate finance highlights the importance of diversified collateral structures in improving credit access and reducing lender risk (Garmaise &amp; Moskowitz, 1999)<sup class="fnref"><a id="cite-2" href="#ref-2">2</a></sup>. If Bitcoin is viewed as &ldquo;digital gold,&rdquo; as many early adopters and researchers have suggested (Yermack, 2015)<sup class="fnref"><a id="cite-3" href="#ref-3">3</a></sup>, then its inclusion in a capital stack could serve as a novel form of hard-money collateral.</p>
+    <p>Most existing literature on Bitcoin-backed lending has focused on retail lending platforms and margin trading, where collateral is subject to liquidation if asset prices fall. This presents a challenge for long-term, illiquid projects, such as real estate development. There is little to no research (as of 2020) on non-liquidating, institutional-grade Bitcoin collateral models, which presents a unique opportunity for this thesis to contribute original insight.</p>
+
+    <h2>Hypothesis</h2>
+    <h3>Primary hypothesis</h3>
+    <p>Integrating Bitcoin as 10&ndash;30% of the collateral package in real estate development loans will improve capital access and project returns without significantly increasing lender risk, provided that the loan structure is designed to mitigate short-term volatility, such as no mark-to-market liquidation triggers.</p>
+    <h3>Secondary hypotheses</h3>
+    <ul>
+      <li>Developers using Bitcoin-backed financing will experience reduced reliance on outside equity partners and retain a greater share of future profits.</li>
+      <li>The inclusion of Bitcoin will attract a new class of investors seeking yield with Bitcoin exposure, thereby increasing liquidity for development projects.</li>
+      <li>Bitcoin&rsquo;s long-term price appreciation will positively impact loan performance and encourage longer borrower-lender alignment.</li>
+    </ul>
+
+    <h2>Background and Significance</h2>
+    <p>While Bitcoin is often treated as a passive store of value, its integration into real estate financing could unlock significant economic activity. Consider a hypothetical mixed-use development project valued at $20 million: the developer could secure a $15 million construction loan where $3 million of the collateral package is in Bitcoin, with the remaining $17 million collateralized by the land and future building improvements. This structure would allow the developer to:</p>
+    <ul>
+      <li>Reduce reliance on outside equity partners and preserve a greater share of future profits.</li>
+      <li>Maintain exposure to Bitcoin&rsquo;s price appreciation throughout the project&rsquo;s lifespan.</li>
+      <li>Align project timelines with Bitcoin&rsquo;s four-year halving cycles to encourage long-term planning.</li>
+      <li>Attract Bitcoin-native investors seeking exposure to yield-generating real-world assets.</li>
+    </ul>
+
+    <h2>Implications for Architectural Design</h2>
+    <p>This financing model does more than shift capital flows; it has the potential to reshape architectural decision-making and design outcomes in the following ways:</p>
+    <div class="implications">
+    <h3>1. Freeing up capital for design quality</h3>
+    <p>By improving access to capital or providing more favorable loan terms, Bitcoin-backed financing can allow developers to allocate more funds toward high-quality materials, sustainability features, and innovative design solutions that are often cut during value engineering.</p>
+    <h3>2. Encouraging long-term thinking</h3>
+    <p>Bitcoin&rsquo;s ethos of low time preference naturally aligns with architecture that prioritizes durability and longevity. A financing structure that rewards long-term commitment could incentivize projects that use timeless design principles rather than short-lived, purely cost-driven solutions.</p>
+    <h3>3. Empowering architect-developers</h3>
+    <p>Architects acting as developers often struggle to secure financing and must give up significant equity or creative control. A Bitcoin-based collateral strategy could allow them to retain a larger share of their project, preserving design integrity and authorship.</p>
+    <h3>4. Enabling visionary and community-oriented projects</h3>
+    <p>Bitcoin-backed financing can provide opportunities for smaller, community-driven, or experimental projects such as galleries, maker spaces, and cultural centers that may not attract conventional capital. Architects could spearhead these projects and use this financial model to bring visionary ideas to life.</p>
+    <h3>5. Creating a global patronage model for architecture</h3>
+    <p>Bitcoin&rsquo;s borderless nature opens the door for projects to attract funding from a global network of Bitcoiners who share values of permanence, resilience, and freedom. This could democratize architectural patronage and fuel a new wave of culturally significant projects worldwide.</p>
+    </div>
+
+    <h2>Methodology and Expected Outcome</h2>
+    <p>This thesis will explore hypothetical capital stack models like the one above, stress-test scenarios under different Bitcoin price movements, and analyze the legal and regulatory considerations of using Bitcoin as collateral. It will examine custody solutions available as of 2020, collateralization ratios, volatility management strategies, and incentive alignment to produce a practical framework for future implementation.</p>
+    <p>This thesis aims to deliver a replicable framework for real estate developers and architect-developers to incorporate Bitcoin into their financing strategy responsibly. Beyond financial innovation, it seeks to demonstrate how this model can improve design quality, enable long-term thinking, and create opportunities for more visionary and socially valuable projects.</p>
+
+    <h2>Conclusion</h2>
+    <p>Integrating Bitcoin into real estate financing represents a forward-looking step for capital markets, where digital and physical assets could coexist in sophisticated, mutually reinforcing structures. For architects, it offers the promise of greater creative control, higher-quality outcomes, and new opportunities for cultural and community impact. This thesis will argue that Bitcoin can become not just a tool for capital formation, but a catalyst for better architecture.</p>
+
+    <h2>References</h2>
+    <ol class="refs">
+      <li id="ref-1">Baur, Dirk G., Hong, KiHoon and Lee, Adrian (2018). Bitcoin: Medium of exchange or speculative assets? Journal of International Financial Markets, Institutions and Money, 54, issue C, 177&ndash;189. <a class="backref" href="#cite-1" aria-label="Back to citation 1">&#8617;</a></li>
+      <li id="ref-2">Garmaise, Mark J. and Moskowitz, Tobias J. Confronting Information Asymmetries: Evidence from Real Estate Markets (November 1999). Available at SSRN: <a href="https://ssrn.com/abstract=199432" target="_blank" rel="noopener noreferrer">ssrn.com/abstract=199432</a> or <a href="https://dx.doi.org/10.2139/ssrn.199432" target="_blank" rel="noopener noreferrer">dx.doi.org/10.2139/ssrn.199432</a>. <a class="backref" href="#cite-2" aria-label="Back to citation 2">&#8617;</a></li>
+      <li id="ref-3">Yermack, D. (2015). Is Bitcoin a Real Currency? An Economic Appraisal. In: Handbook of Digital Currency, Elsevier, Amsterdam, 31&ndash;43. <a href="https://doi.org/10.1016/B978-0-12-802117-0.00002-3" target="_blank" rel="noopener noreferrer">doi.org/10.1016/B978-0-12-802117-0.00002-3</a> <a class="backref" href="#cite-3" aria-label="Back to citation 3">&#8617;</a></li>
+    </ol>
+
+    <p class="doc-foot"><a href="#">Home</a></p>
+  </article>
+
+<script>
+  // ---- EDIT THIS LINE ----
+  const TIMEZONE = "America/New_York";  // e.g. "Europe/London", "Asia/Tokyo"
+  // ------------------------
+  // (The location text lives in the clock markup above, so its hand-drawn
+  //  "Beast" flourish survives the per-second time update.)
+
+  function updateClock() {
+    const time = new Intl.DateTimeFormat("en-US", {
+      timeZone: TIMEZONE,
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    }).format(new Date()).toLowerCase();
+    document.getElementById("clockTime").textContent = time;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ---- HANDWRITTEN MARGIN NOTES + ARROWS ----
+  // All four notes (Birmingham, X, "builder", International Klein Blue) share the
+  // same machinery: place a handwritten note in the margin when there's room
+  // (otherwise drop it inline), and draw a curved IKB arrow from the note to its
+  // anchor. Only the side, breakpoint, spacing, and curve geometry differ, so the
+  // common scaffolding lives here once and each note supplies a small config plus
+  // a curve() returning the arrow's body path, tip, head size, and approach unit
+  // vector (the direction the arrowhead points). An "upward" arrowhead is just an
+  // approach vector of (0, -1).
+  const rot = (x, y, ag) => [x * Math.cos(ag) - y * Math.sin(ag), x * Math.sin(ag) + y * Math.cos(ag)];
+
+  function createMarginNote(opts) {
+    const note = document.getElementById(opts.note);
+    const anchor = document.getElementById(opts.anchor);
+    const svg = document.getElementById(opts.svg);
+    const path = document.getElementById(opts.path);
+    const main = document.querySelector("main");
+    if (!note || !anchor || !svg || !path || !main) return;
+
+    const isWide = () => window.matchMedia(opts.wide).matches;
+    const { side, gap: GAP, maxW: MAX_W, top: TOP } = opts;
+
+    function layout() {
+      // Some anchors (the IKB swatch) sit inside a collapsed <details>; while it's
+      // folded the anchor has no useful position, so hide the note + arrow.
+      if (opts.hidden && opts.hidden(anchor)) {
+        note.classList.remove("ready", "inline");
+        note.style.left = note.style.top = note.style.width = "";
+        svg.style.display = "none";
+        return;
+      }
+
+      const mainRect = main.getBoundingClientRect();
+      const sx = window.scrollX, sy = window.scrollY;
+      const available = side === "right"
+        ? window.innerWidth - mainRect.right - 24 - GAP   // whitespace to the RIGHT
+        : mainRect.left - 24 - GAP;                       // whitespace to the LEFT
+
+      if (!isWide() || available < 150) {
+        // No room in the margin: drop the note below the line, hide the arrow.
+        note.classList.add("inline", "ready");
+        note.style.left = note.style.top = note.style.width = "";
+        svg.style.display = "none";
+        return;
+      }
+
+      note.classList.remove("inline");
+      svg.style.display = "";
+
+      const noteW = Math.min(MAX_W, available);
+      note.style.width = noteW + "px";
+      const aRect = anchor.getBoundingClientRect();
+      note.style.left = (side === "right"
+        ? mainRect.right + GAP + sx
+        : mainRect.left - GAP - noteW + sx) + "px";
+      // Vertical placement. Default: the note hangs DOWN from the word's line.
+      // `up`: it hangs UP (bottom near the word), tucked alongside its paragraph.
+      // `center`: its middle sits on the gap just below the word — the exact point
+      // its arrow exits — so the arrow comes out of the centre of the note block.
+      let topPx;
+      if (opts.center) {
+        const pEl = anchor.closest("p") || anchor;
+        let nx = pEl.nextElementSibling;
+        while (nx && nx.tagName !== "P") nx = nx.nextElementSibling;
+        const gapY = nx
+          ? (pEl.getBoundingClientRect().bottom + nx.getBoundingClientRect().top) / 2
+          : aRect.bottom + 10;
+        topPx = gapY + sy + TOP - note.offsetHeight / 2;
+      } else if (opts.up) {
+        topPx = aRect.bottom + sy + TOP - note.offsetHeight;
+      } else {
+        topPx = aRect.top + sy + TOP;
+      }
+      note.style.top = topPx + "px";
+      note.classList.add("ready");
+
+      requestAnimationFrame(drawArrow);
+    }
+
+    function drawArrow() {
+      const docW = document.documentElement.scrollWidth;
+      const docH = document.documentElement.scrollHeight;
+      svg.setAttribute("width", docW);
+      svg.setAttribute("height", docH);
+      svg.setAttribute("viewBox", "0 0 " + docW + " " + docH);
+
+      const sx = window.scrollX, sy = window.scrollY;
+      const a = anchor.getBoundingClientRect();
+      const n = note.getBoundingClientRect();
+
+      // Note-specific body of the arrow + where/which way it points.
+      const g = opts.curve({ a, n, sx, sy, anchor });
+      const ang = Math.PI / 7;
+      const [b1x, b1y] = rot(-g.ux, -g.uy, ang);
+      const [b2x, b2y] = rot(-g.ux, -g.uy, -ang);
+      path.setAttribute("d",
+        g.d +
+        " M " + g.tipX + " " + g.tipY + " L " + (g.tipX + b1x * g.head) + " " + (g.tipY + b1y * g.head) +
+        " M " + g.tipX + " " + g.tipY + " L " + (g.tipX + b2x * g.head) + " " + (g.tipY + b2y * g.head));
+    }
+
+    let raf;
+    function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(layout); }
+    window.addEventListener("load", layout);
+    window.addEventListener("resize", schedule);
+    // A note hidden by a <details> (see opts.hidden) must recompute when that
+    // section opens/closes, which shifts the anchors below it. The `toggle` event
+    // doesn't bubble, hence the capture-phase listener on document.
+    if (opts.hidden) document.addEventListener("toggle", schedule, true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+    layout();
+  }
+
+  // Birmingham, left margin; arrow rises through the inter-paragraph gap to the
+  // underside of the word.
+  createMarginNote({
+    note: "bhamNote", anchor: "bhamAnchor", svg: "bhamArrow", path: "bhamArrowPath",
+    wide: "(min-width: 1000px)", side: "left", gap: 30, maxW: 250, top: -8,
+    curve({ a, n, sx, sy, anchor }) {
+      const pEl = anchor.closest("p") || anchor;
+      const p1 = pEl.getBoundingClientRect();
+      // The paragraph immediately after Birmingham's, whatever it happens to be,
+      // so the arrow always rises through the real gap just below the word.
+      let nx = pEl.nextElementSibling;
+      while (nx && nx.tagName !== "P") nx = nx.nextElementSibling;
+      const p2 = nx ? nx.getBoundingClientRect() : null;
+      // Y of the whitespace gap between the two paragraphs.
+      const gapY = (p2 ? (p1.bottom + p2.top) / 2 : a.bottom + 14) + sy;
+      const startX = n.right + sx, startY = gapY;          // out of the note's RIGHT side
+      const tipX = a.left + sx + a.width / 2;             // underside of the word
+      const tipY = a.bottom + sy + 1;
+      const gapBottom = (p2 ? p2.top - 4 : a.bottom + 18) + sy;
+      const cornerY = Math.max(startY, Math.min(gapBottom, tipY + 24));
+      const r = 7;
+      const d =
+        "M " + startX + " " + startY +
+        " C " + (startX + (tipX - startX) * 0.5) + " " + startY + ", " +
+                (tipX - 44) + " " + cornerY + ", " + (tipX - r) + " " + cornerY +
+        " Q " + tipX + " " + cornerY + ", " + tipX + " " + (cornerY - r) +
+        " L " + tipX + " " + tipY;
+      return { d, tipX, tipY, head: 8, ux: 0, uy: -1 };   // arrowhead straight up
+    }
+  });
+
+  // X, right margin; arrow exits the note's left edge and curls in to the glyph.
+  createMarginNote({
+    note: "xNote", anchor: "xAnchor", svg: "xArrow", path: "xArrowPath",
+    wide: "(min-width: 1000px)", side: "right", gap: 30, maxW: 180, top: 24,
+    curve({ a, n, sx, sy }) {
+      const startX = n.left + sx, startY = n.top + sy + n.height / 2;
+      const tipX = a.right + sx + 3, tipY = a.top + sy + a.height / 2;
+      const c1x = startX - 45, c1y = startY;     // horizontal exit from the left
+      const c2x = tipX + 30, c2y = tipY + 8;     // approach the word from lower-right
+      const d = "M " + startX + " " + startY +
+                " C " + c1x + " " + c1y + ", " + c2x + " " + c2y + ", " + tipX + " " + tipY;
+      const dx = tipX - c2x, dy = tipY - c2y, len = Math.hypot(dx, dy) || 1;
+      return { d, tipX, tipY, head: 8, ux: dx / len, uy: dy / len };
+    }
+  });
+
+  // "builder", right margin; mirrors the Birmingham arrow, rising through the gap
+  // just below the word with a rounded corner and a straight-up arrowhead.
+  // `center` puts the arrow's exit at the note's middle; the X note drops below it.
+  createMarginNote({
+    note: "builderNote", anchor: "builderAnchor", svg: "builderArrow", path: "builderArrowPath",
+    wide: "(min-width: 1200px)", side: "right", gap: 56, maxW: 200, top: 0, center: true,
+    curve({ a, n, sx, sy, anchor }) {
+      const pEl = anchor.closest("p") || anchor;
+      const p1 = pEl.getBoundingClientRect();
+      // The paragraph immediately after the word's, so the arrow rises through
+      // the real gap just below it (mirrors the Birmingham note's approach).
+      let nx = pEl.nextElementSibling;
+      while (nx && nx.tagName !== "P") nx = nx.nextElementSibling;
+      const p2 = nx ? nx.getBoundingClientRect() : null;
+      const gapY = (p2 ? (p1.bottom + p2.top) / 2 : a.bottom + 14) + sy;
+      const startX = n.left + sx, startY = gapY;           // right-margin note, exits its LEFT
+      const tipX = a.left + sx + a.width / 2;              // underside of the word
+      const tipY = a.bottom + sy + 1;
+      const gapBottom = (p2 ? p2.top - 4 : a.bottom + 18) + sy;
+      const cornerY = Math.max(startY, Math.min(gapBottom, tipY + 24));
+      const r = 7;
+      const d =
+        "M " + startX + " " + startY +
+        " C " + (startX + (tipX - startX) * 0.5) + " " + startY + ", " +
+                (tipX + 44) + " " + cornerY + ", " + (tipX + r) + " " + cornerY +
+        " Q " + tipX + " " + cornerY + ", " + tipX + " " + (cornerY - r) +
+        " L " + tipX + " " + tipY;
+      return { d, tipX, tipY, head: 8, ux: 0, uy: -1 };    // arrowhead straight up
+    }
+  });
+
+  // International Klein Blue, left margin; only shown when the spec section is
+  // open (its swatch lives inside that disclosure).
+  createMarginNote({
+    note: "ikbNote", anchor: "ikbAnchor", svg: "ikbArrow", path: "ikbArrowPath",
+    wide: "(min-width: 1080px)", side: "left", gap: 44, maxW: 190, top: -40, up: true,
+    hidden(anchor) {
+      const specs = anchor.closest("details");
+      return specs && !specs.open;
+    },
+    curve({ a, n, sx, sy }) {
+      const startX = n.right + sx, startY = n.top + sy + n.height / 2;
+      const tipX = a.left + sx - 3, tipY = a.top + sy + a.height / 2;
+      const c1x = startX + 22, c1y = startY + 34;   // exit right AND descend steadily
+      const c2x = tipX - 16, c2y = tipY - 34;       // approach from above-left, matched
+      const d = "M " + startX + " " + startY +      // head points down-right, with the
+                " C " + c1x + " " + c1y + ", " + c2x + " " + c2y + ", " + tipX + " " + tipY;  // curve, not against it
+      const dx = tipX - c2x, dy = tipY - c2y, len = Math.hypot(dx, dy) || 1;
+      return { d, tipX, tipY, head: 8, ux: dx / len, uy: dy / len };
+    }
+  });
+
+  /* Stamp the "Updated" line from the document's real last-modified time,
+     so it tracks actual edits to the file instead of a hand-typed date.
+     Keeps the hardcoded fallback if the value is unavailable/invalid. */
+  (function () {
+    const el = document.querySelector(".updated");
+    if (!el) return;
+    const d = new Date(document.lastModified);
+    if (isNaN(d.getTime())) return;
+    const M = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    el.textContent = "Updated " + M[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  })();
+
+  /* Night mode: the sun is the light switch. No persistence, light on load. */
+  (function nightModeToggle() {
+    const root = document.documentElement;
+    const sun = document.getElementById("themeToggle");
+    if (!sun) return;
+
+    function toggle() {
+      const night = root.getAttribute("data-theme") === "night";
+      if (night) root.removeAttribute("data-theme");
+      else root.setAttribute("data-theme", "night");
+      sun.setAttribute("aria-pressed", String(!night));
+    }
+
+    sun.addEventListener("click", toggle);
+  })();
+
+  /* Grow the grass on the Bliss hill: a seeded scatter of hand-drawn tufts,
+     graded big-in-front to small-at-the-crest for depth, every blade clamped to
+     sit below the traced horizon so none stray into the sky. Deterministic, so
+     the meadow is identical on every load. */
+  function growHill(exclude) {
+    const path = document.getElementById("hillGrass");
+    if (!path) return;
+    const HZ = [54.2,51.7,48.4,45.0,42.1,39.7,38.0,37.3,37.1,35.8,35.1,35.1,35.4,36.7,38.3,39.7,41.1,42.8,44.7,47.1,49.2,52.0,54.4,56.8,59.2,62.1,64.7,68.5,71.9,74.1,76.1,79.5,83.0,85.5,86.9,88.7,91.9,95.0,98.8,102.4,102.1];
+    function hz(x) {
+      if (x <= 0) return HZ[0];
+      if (x >= 800) return HZ[40];
+      const t = x / 20, i = Math.floor(t);
+      return HZ[i] + (HZ[i + 1] - HZ[i]) * (t - i);
+    }
+    function rng(a) {
+      return function () {
+        a |= 0; a = a + 0x6D2B79F5 | 0;
+        let t = Math.imul(a ^ a >>> 15, 1 | a);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+    function tuft(x, y, h, r) {
+      const opts = [[-7, -4, 0, 4, 7], [-5, -2, 2, 5], [-4, 0, 4]];
+      const cfg = opts[Math.floor(r() * 3)];
+      const hs = { 5: [.82, .92, 1, .92, .82], 4: [.86, 1, .98, .84], 3: [.85, 1, .86] }[cfg.length];
+      const sc = h / 16 + 0.5;
+      let d = "";
+      for (let i = 0; i < cfg.length; i++) {
+        const dx = cfg[i];
+        const hh = h * hs[i] * (0.92 + r() * 0.16);
+        const tipx = x + dx * (0.85 + r() * 0.3) * sc;
+        d += "M " + x + " " + y.toFixed(1) +
+             " C " + (x + dx * 0.3 * sc).toFixed(1) + " " + (y - hh * 0.34).toFixed(1) +
+             ", " + (x + dx * 0.72 * sc).toFixed(1) + " " + (y - hh * 0.66).toFixed(1) +
+             ", " + tipx.toFixed(1) + " " + (y - hh).toFixed(1) + " ";
+      }
+      return d;
+    }
+    const r = rng(21);
+    const crest = 35, margin = 2;
+    let out = "", y = 314, gap = 26;
+    while (y > crest + 6) {
+      const rr = (y - crest) / (320 - crest);
+      const h = 2 + 17 * Math.pow(rr, 1.7);
+      const cols = 7 + Math.floor(rr * 10);
+      for (let c = 0; c < cols; c++) {
+        let x = (c + 0.2 + r() * 0.6) / cols * 800;
+        x += r() * 36 - 18;
+        const reps = r() > 0.22 ? 1 : 2;
+        for (let k = 0; k < reps; k++) {
+          const jx = Math.round(x + k * (7 + r() * 5));
+          if (!(jx > 10 && jx < 790)) continue;
+          const jy = y + (r() * 12 - 6);
+          const hh = h * (0.72 + r() * 0.56);
+          if (jy - hh < hz(jx) + margin) continue;
+          if (jy > 317) continue;
+          // Build the tuft regardless (so the RNG stream — and thus the rest of the
+          // meadow — stays identical), but drop it when it would sit behind the
+          // clock line, whose box is passed in as an exclusion zone in viewBox units.
+          const t = tuft(jx, jy, hh, r);
+          const clear = !exclude || jx + 12 < exclude.x0 || jx - 12 > exclude.x1 ||
+                        jy < exclude.y0 || (jy - hh) > exclude.y1;
+          if (clear) out += t;
+        }
+      }
+      y -= gap;
+      gap = Math.max(12, gap - 2.0);
+    }
+    path.setAttribute("d", out);
+  }
+  growHill(null);
+
+  /* Anchor the Bliss hill to the text, not the viewport: land the horizon crest
+     in the gap between the "Specifications" section and the "Beast" flourish, at
+     every width and whenever that section is toggled. The band still runs full-
+     bleed and keeps its exact traced proportions; the page is extended just
+     enough for the grass to reach the very bottom. Falls back to the CSS
+     bottom-anchored placement if the script never runs. */
+  (function placeHill() {
+    const hill = document.querySelector(".sky-hill");
+    const svg = hill && hill.querySelector("svg");
+    if (!hill || !svg) return;
+
+    function detailsFor(re) {
+      return [...document.querySelectorAll("details")].find(d => {
+        const s = d.querySelector("summary");
+        return s && re.test(s.textContent || "");
+      });
+    }
+
+    let busy = false;
+
+    function place() {
+      const specs = detailsFor(/Specifications/);
+      const beast = document.querySelector(".beast-word");
+      if (!specs || !beast) return;
+
+      const sy = window.scrollY || window.pageYOffset || 0;
+      const vw = document.documentElement.clientWidth;
+      const bandH = vw * 320 / 800;               // svg height at width:100%
+      const crestOff = (35 / 320) * bandH;         // crest sits this far below band top
+
+      const gapY = (specs.getBoundingClientRect().bottom + sy +
+                    beast.getBoundingClientRect().top + sy) / 2;
+
+      // The hill stays pinned to the foot of the page via CSS (bottom: 0), so the
+      // grass always reaches the very bottom. To land the crest in the gap, reserve
+      // exactly the right amount of space below the last in-flow line (the clock):
+      // with the foot fixed, more reserve pushes the whole band — crest included —
+      // downward, so we solve for the reserve that puts the crest at the gap.
+      hill.style.top = "";
+      hill.style.bottom = "";
+      const clock = document.getElementById("clock");
+      const cm = clock ? parseFloat(getComputedStyle(clock).marginBottom) || 0 : 0;
+      const contentBottom = (clock ? clock.getBoundingClientRect().bottom + sy : gapY) + cm;
+      const belowCrest = bandH - crestOff;               // crest-to-foot distance
+      const pad = gapY - contentBottom + belowCrest;
+      if (!document.body.classList.contains("showing-subpage")) {
+        document.body.style.paddingBottom = Math.max(0, Math.ceil(pad)) + "px";
+      }
+
+      // Clear the grass from behind the clock line: map its box into the hill's
+      // viewBox (svg units) so the cleared patch tracks the text at any width.
+      const sr = svg.getBoundingClientRect();
+      let exclude = null;
+      if (clock && sr.width && sr.height) {
+        const cr = clock.getBoundingClientRect();
+        const vx = px => (px - sr.left) / sr.width * 800;
+        const vy = py => (py - sr.top) / sr.height * 320;
+        exclude = { x0: vx(cr.left) - 12, x1: vx(cr.right) + 12,
+                    y0: vy(cr.top) - 8, y1: vy(cr.bottom) + 8 };
+      }
+      growHill(exclude);
+
+      // Ride the "Bliss (Windows XP)" signpost on the crest's left shoulder: plant
+      // its post just below the ridge, board rising above, and never let the board
+      // stray over the content column (clamp its right edge left of the section).
+      const sign = document.getElementById("blissSign");
+      if (sign && sr.width && sr.height) {
+        const svgEl = sign.querySelector("svg");
+        const textEl = sign.querySelector(".sign-text");
+        sign.style.display = "";               // ensure it's renderable before measuring
+        // Size the board snugly around the (Caveat) text — no fixed slack. Re-runs
+        // on fonts.ready, so it re-hugs once the handwriting face swaps in.
+        let bw = 96;
+        try { const bb = textEl.getBBox(); if (bb && bb.width) bw = bb.width; } catch (e) {}
+        const PADX = 7;
+        const boardW = Math.max(48, Math.round(bw + PADX * 2));
+        const vbW = boardW + 4;
+        const cx = vbW / 2;
+        sign.querySelector(".sign-board").setAttribute("x", (cx - boardW / 2).toFixed(1));
+        sign.querySelector(".sign-board").setAttribute("width", boardW);
+        sign.querySelector(".sign-post").setAttribute("x", (cx - 2.5).toFixed(1));
+        textEl.querySelectorAll("tspan").forEach(t => t.setAttribute("x", cx.toFixed(1)));
+        svgEl.setAttribute("viewBox", "0 0 " + vbW + " 56");
+        svgEl.style.width = vbW + "px";
+        sign.style.width = vbW + "px";
+        const POST_CX = cx, BOARD_R = cx + boardW / 2;
+
+        const POSTX = 107, POSTY = 42, POST_BASE_Y = 54;
+        const sx = window.scrollX || window.pageXOffset || 0;
+        const baseX = sr.left + sx + POSTX / 800 * sr.width;
+        const baseY = sr.top  + sy + POSTY / 320 * sr.height;
+        const left = baseX - POST_CX;
+        const contentLeft = specs.getBoundingClientRect().left + sx;
+        if (left + BOARD_R <= contentLeft - 10 && left >= 2) {
+          sign.style.display = "";
+          sign.style.left = left + "px";
+          sign.style.top  = (baseY - POST_BASE_Y) + "px";
+        } else {
+          sign.style.display = "none";   // no room on the crest at this width
+        }
+      }
+
+      // The margin-note arrow layers size themselves to the full document height,
+      // and can hold the page taller than the hill, leaving a strip below the
+      // grass. Collapse them so the document height reflects only content + hill,
+      // then let their own resize handler redraw them to that true height.
+      const arrows = document.querySelectorAll(".note-arrow");
+      if (arrows.length) {
+        arrows.forEach(s => s.setAttribute("height", "0"));
+        busy = true;
+        window.dispatchEvent(new Event("resize"));
+        busy = false;
+      }
+    }
+
+    place();
+    let t;
+    const soon = () => { clearTimeout(t); t = setTimeout(place, 120); };
+    window.addEventListener("resize", () => { if (!busy) soon(); });
+    window.addEventListener("load", place);
+    // Caveat swaps in later and reflows the flourish/notes, moving the anchors.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    // <details> "toggle" doesn't bubble, so listen in the capture phase.
+    document.addEventListener("toggle", () => { clearTimeout(t); t = setTimeout(place, 0); }, true);
+  })();
+
+  /* In-page routing: reveal a hidden reading page when its id is the URL hash. */
+  (function () {
+    const pages = [...document.querySelectorAll(".subpage")];
+    if (!pages.length) return;
+    const homeTitle = document.title;
+    let current = null;
+    function route() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id ? document.getElementById(id) : null;
+      const active = target
+        ? (target.classList.contains("subpage") ? target : target.closest(".subpage"))
+        : null;
+      pages.forEach((p) => { p.hidden = p !== active; });
+      document.body.classList.toggle("showing-subpage", !!active);
+      if (active) document.body.style.paddingBottom = "";
+      document.title = (active && active.getAttribute("data-title")) || homeTitle;
+      if (active !== current) {
+        /* entering/leaving a page: jump to top and recompute the home layout.
+           (an in-page anchor keeps the same page active, so we don't reset scroll) */
+        if (active) requestAnimationFrame(() => window.scrollTo(0, 0));
+        window.dispatchEvent(new Event("resize"));
+      }
+      current = active;
+    }
+    window.addEventListener("hashchange", route);
+    route();
+  })();
+</script>
+</body>
+</html>
