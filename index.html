@@ -527,6 +527,11 @@
   #builderNote.inline { margin-top: 12px; }
   /* Stacked under the palette: clear the last row so the note doesn't sit on it. */
   #ikbNote.inline { margin-top: 22px; margin-bottom: 8px; }
+  /* While the Specifications section is closed, its note and arrow are hidden the
+     instant the section folds (CSS reacts in the same frame; the script that
+     re-lays them out runs a moment later, which used to show as a flash). */
+  .specs-toggle:not([open]) ~ #ikbNote,
+  .specs-toggle:not([open]) ~ #ikbArrow { visibility: hidden; transition: none; }
 
   .note-arrow {
     position: absolute;
@@ -941,11 +946,9 @@
   <div class="margin-note" id="bhamNote">A surprisingly wonderful place to live, especially for someone from the Northeast who knew nothing about it and moved there on 13 days&rsquo; notice as part of my <a href="https://en.wikipedia.org/wiki/Venture_for_America">Venture for America</a> Fellowship.....</div>
   <svg class="note-arrow" id="bhamArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="bhamArrowPath" d=""></path></svg>
 
-  <p>I&rsquo;m cross-disciplinary by nature, and I&rsquo;ve filled a lot of roles across the blockchain, real estate, architecture, and property technology industries. I currently work across operations, strategy, product, and capital fundraising, helping founders and teams get from a rough idea to a real, shipped thing, with a maybe-unhealthy attention to detail. These days that mostly means a handful of blockchain startups and organizations, plus a venture capital firm.</p>
+  <p>I&rsquo;m cross-disciplinary by nature, and I&rsquo;ve filled a lot of roles in the blockchain, real estate, architecture, and property technology industries. I currently consult across operations, strategy, product, and capital fundraising for a handful of blockchain startups and organizations, plus a venture capital firm. I&rsquo;ve been in the space since 2017, and I&rsquo;m most interested in what it can do for real-world assets.</p>
 
-  <p>I have been active in the blockchain space since 2017, and I&rsquo;m especially interested in what the technology can do for real-world assets. I also write for blockchain-focused publications and online figures in the space. <span class="hand-note">(though a lot of what I do there is anonymous or pseudonymous)</span></p>
-
-  <p id="bioArch">I originally trained as an architect, completing my undergraduate degree at <a href="https://www.temple.edu/">Temple University</a>, the Design Discovery program at <a href="https://www.gsd.harvard.edu/">Harvard University&rsquo;s GSD</a>, and my master&rsquo;s at the <a href="https://www.upenn.edu/">University of Pennsylvania</a>. Although I am no longer an architect, I still occasionally design buildings, and I care as much as ever about the built environment: urbanism, placemaking, and the potential to build something better. My personal research looks at how the environments we build feed the loneliness and isolation epidemic of modern life. These days I consider myself more of a &ldquo;<span id="builderAnchor">builder</span>.&rdquo; As Virgil Abloh once said:</p>
+  <p id="bioArch">I originally trained as an architect, completing my undergraduate degree at <a href="https://www.temple.edu/">Temple University</a>, the Design Discovery program at <a href="https://www.gsd.harvard.edu/">Harvard University&rsquo;s GSD</a>, and my master&rsquo;s at the <a href="https://www.upenn.edu/">University of Pennsylvania</a>. Although I am no longer an architect, I still occasionally design buildings, and I care as much as ever about the built environment. These days I consider myself more of a &ldquo;<span id="builderAnchor">builder</span>.&rdquo; As Virgil Abloh once said:</p>
 
   <p id="bioQuote">&ldquo;Young architects can change the world by not building buildings.&rdquo;</p>
 
@@ -955,7 +958,7 @@
        markup so that, when stacked on narrow screens, it never splits
        "As Virgil Abloh once said:" from the quote itself.
        ============================================================ -->
-  <div class="margin-note margin-note-left" id="builderNote">I believe a builder (in&nbsp;the&nbsp;<a href="https://x.com/a16z/status/2016994954422407300">sense <span class="keep">Marc Andreessen describes</span></a>) is someone who makes things.....</div>
+  <div class="margin-note margin-note-left" id="builderNote">I believe a builder (in&nbsp;the&nbsp;<a href="https://x.com/a16z/status/2016994954422407300">sense <span class="keep">Marc Andreessen describes</span></a>) is someone who makes &ldquo;things&rdquo;.....</div>
   <svg class="note-arrow" id="builderArrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path id="builderArrowPath" d=""></path></svg>
 
   <p>I can be reached via <a href="mailto:shaunholben@gmail.com">email</a>. You can also find me on <a href="https://www.instagram.com/shaunholben/">Instagram</a>
@@ -1346,7 +1349,13 @@
       // Some anchors (the IKB swatch) sit inside a collapsed <details>; while it's
       // folded the anchor has no useful position, so hide the note + arrow.
       if (opts.hidden && opts.hidden(anchor)) {
+        // Vanish at once, like its arrow. (Fading out would leave the note visible
+        // for a moment after it has been moved off its anchor, so it flashed in
+        // the wrong place as the section closed.)
+        note.style.transition = "none";
         note.classList.remove("ready", "inline");
+        void note.offsetWidth;            // commit the instant hide before restoring the fade
+        note.style.transition = "";
         note.style.left = note.style.top = note.style.width = "";
         svg.style.display = "none";
         return;
