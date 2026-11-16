@@ -14,6 +14,14 @@
 <link rel="canonical" href="https://shaunholben.github.io/">
 <meta name="description" content="Shaun Holben: operations, strategy, and product across blockchain, real estate, and design. A hand-built single page for my work, writing, and art.">
 <meta name="theme-color" content="#faf6ea">
+<!-- Keep browsers' forced "dark mode" features (Brave's Night Mode, the Dark Reader
+     extension, Chrome's auto-dark) from repainting the page: it has its own night. -->
+<meta name="darkreader-lock">
+<!-- Declares both schemes so Samsung Internet uses the page's own styles (its dark-media
+     rules keep the ivory paper) instead of forcing its dark mode; the html element's
+     "only light" / "only dark" below is what turns off Chromium's auto-dark (Chrome,
+     Edge, Opera, Samsung Internet, Brave on Android). -->
+<meta name="color-scheme" content="light dark">
 
 <!-- Social sharing (Open Graph + Twitter) -->
 <meta property="og:title" content="Shaun Holben">
@@ -92,12 +100,12 @@
     --text: #FAF6EA;                    /* Muted Off White, the light paper, now the text */
     --bg: #000000;                      /* Black, the night paper */
     --dot: rgba(250, 246, 234, 0.10);   /* faint Muted Off White dots */
-    color-scheme: dark;
+    color-scheme: only dark;
   }
 
   * { box-sizing: border-box; }
 
-  html { -webkit-text-size-adjust: 100%; color-scheme: light; overflow-x: hidden; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: only light; overflow-x: hidden; }
 
   body {
     font-family: "Holben Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -527,6 +535,20 @@
   #builderNote.inline { margin-top: 12px; }
   /* Stacked under the palette: clear the last row so the note doesn't sit on it. */
   #ikbNote.inline { margin-top: 22px; margin-bottom: 8px; }
+  /* Narrow screens: the "(but not necessarily...)" aside wraps into the lines under
+     "Birmingham", leaving the stacked note's arrow no clean way up. Start it on its own
+     lines with half a grid row of air above (and half below, so the grid holds), which
+     opens a strip the arrow can travel along to reach the word. */
+  @media (max-width: 1047px) {   /* the widths where the Birmingham note sits under its paragraph */
+    p:has(#bhamAnchor) .hand-note {
+      display: block;
+      width: auto;
+      white-space: normal;
+      line-height: var(--grid);
+      margin-top: calc(var(--grid) / 2);
+      padding-bottom: calc(var(--grid) / 2);   /* padding, so it can't collapse into the paragraph's margin */
+    }
+  }
   /* While the Specifications section is closed, its note and arrow are hidden the
      instant the section folds (CSS reacts in the same frame; the script that
      re-lays them out runs a moment later, which used to show as a flash). */
@@ -1307,20 +1329,46 @@
   // An x under the anchor word where a vertical stroke passes between the words
   // of the lines beneath it (so the arrow threads the gaps instead of crossing
   // letters). Searches outward from the word's centre.
-  function threadX(a, words) {
-    const cx = a.left + a.width / 2;
-    const clear = x => !words.some(r => x > r.left - 3 && x < r.right + 3);
-    for (let d = 0; d <= 90; d += 2) {
+  function threadX(a, words, pad) {
+    const cx = a.left + a.width / 2, p = pad || 3;
+    const clear = x => !words.some(r => x > r.left - p && x < r.right + p);
+    for (let d = 0; d <= 140; d += 1) {
       if (clear(cx + d)) return cx + d;
       if (clear(cx - d)) return cx - d;
     }
-    return cx;
+    return null;   // no clean gap
   }
   // A short arrow rising from the top of a stacked note to the underside of its word.
   function riseTo(a, n, sx, sy, note, anchor) {
     const pEl = anchor.closest("p") || anchor;
     const first = lineRects(note)[0] || n;
-    const x = threadX(a, wordsBelow(pEl, a.bottom - 3));
+    const between = wordsBelow(pEl, a.bottom - 3);
+    let x = threadX(a, between, 7);
+    // The straight route is only clean if it can rise vertically from the note
+    // itself; otherwise its first bend would cut across the text in between.
+    const straight = x !== null && x >= first.left + 8 && x <= first.right - 8;
+    if (!straight && between.length) {
+      // No clean gap through the text below the word (on phones, the wrapped
+      // aside). Go around it instead: out the end of the note's first line, up the
+      // right-hand margin, then left along the open strip between the word's line
+      // and the aside, turning up into the word.
+      const top = Math.min(...between.map(r => r.top));
+      const stripY = (a.bottom + top) / 2 + sy;
+      const colR = (document.querySelector("main") || pEl).getBoundingClientRect().right;
+      const gx = Math.min(colR + 10, window.innerWidth - 7) + sx;
+      const tipX = a.left + a.width / 2 + sx, tipY = a.bottom + sy + 1.5;
+      const sX = first.right + sx + 7, sY = (first.top + first.bottom) / 2 + sy;
+      const r = Math.min(6, Math.max(2, (top + sy - stripY) - 1));
+      const d = "M " + sX + " " + sY +
+                " C " + (sX + (gx - sX) * 0.7) + " " + sY + ", " + gx + " " + (sY - 3) + ", " + gx + " " + (sY - 14) +
+                " L " + gx + " " + (stripY + r) +
+                " Q " + gx + " " + stripY + ", " + (gx - r) + " " + stripY +
+                " L " + (tipX + r) + " " + stripY +
+                " Q " + tipX + " " + stripY + ", " + tipX + " " + (stripY - r) +
+                " L " + tipX + " " + tipY;
+      return { d, tipX, tipY, head: 6, ux: 0, uy: -1 };
+    }
+    if (x === null) x = a.left + a.width / 2;
     const tipX = Math.min(Math.max(x, a.left + 2), a.right - 2) + sx, tipY = a.bottom + sy + 2;
     const startX = Math.min(Math.max(x, first.left + 8), first.right - 8) + sx;
     const startY = first.top + sy + 2;
@@ -1428,9 +1476,9 @@
       const ang = Math.PI / 7;
       const [b1x, b1y] = rot(-g.ux, -g.uy, ang);
       const [b2x, b2y] = rot(-g.ux, -g.uy, -ang);
-      const d = g.d +
+      const d = g.d + (g.head ?
         " M " + g.tipX + " " + g.tipY + " L " + (g.tipX + b1x * g.head) + " " + (g.tipY + b1y * g.head) +
-        " M " + g.tipX + " " + g.tipY + " L " + (g.tipX + b2x * g.head) + " " + (g.tipY + b2y * g.head);
+        " M " + g.tipX + " " + g.tipY + " L " + (g.tipX + b2x * g.head) + " " + (g.tipY + b2y * g.head) : "");
       path.setAttribute("d", d);
       // Sketched twice, like the other drawings: a second pass of the same stroke
       // with every point nudged a little (the same nudge each time, so it is steady).
@@ -1482,9 +1530,37 @@
         " L " + tipX + " " + tipY;
       return { d, tipX, tipY, head: 8, ux: 0, uy: -1 };   // arrowhead straight up
     },
-    // Stacked: rise from the top of the note to the underside of the word,
-    // threading between the words of any lines in between.
-    inlineCurve({ a, n, sx, sy, anchor, note }) { return riseTo(a, n, sx, sy, note, anchor); }
+    // Stacked (phones and tablets): the aside sits on its own lines below, which
+    // leaves the rest of the "Birmingham (AL)." line open. Leave the end of the note's
+    // first line, run up the right-hand margin, and come in from the right, pointing
+    // back at "(AL).". Falls back to rising under the word if that line is full.
+    inlineCurve({ a, n, sx, sy, anchor, note }) {
+      const t = anchor.nextSibling;
+      const i = t && t.nodeType === 3 ? t.data.indexOf("(AL)") : -1;
+      if (i >= 0) {
+        const rg = document.createRange();
+        const end = t.data.charAt(i + 4) === "." ? i + 5 : i + 4;
+        rg.setStart(t, i); rg.setEnd(t, end);
+        const al = rg.getBoundingClientRect();
+        const first = lineRects(note)[0] || n;
+        const colR = document.querySelector("main").getBoundingClientRect().right;
+        const gx = Math.min(colR + 10, window.innerWidth - 7) + sx;
+        const tipX = al.right + 6 + sx, tipY = (al.top + al.bottom) / 2 + sy + 1;
+        // ...and only if nothing else (the aside) shares the "(AL)." line to its right.
+        const aside = anchor.closest("p").querySelector(".hand-note");
+        const asideTop = aside ? Math.min(...[...aside.getClientRects()].map(r => r.top)) : Infinity;
+        if (gx - tipX >= 18 && first.top > al.bottom && asideTop > al.bottom - 2) {
+          const sX = first.right + 7 + sx, sY = (first.top + first.bottom) / 2 + sy, r = 7;
+          const d = "M " + sX + " " + sY +
+                    " C " + (sX + (gx - sX) * 0.7) + " " + sY + ", " + gx + " " + (sY - 3) + ", " + gx + " " + (sY - 14) +
+                    " L " + gx + " " + (tipY + r) +
+                    " Q " + gx + " " + tipY + ", " + (gx - r) + " " + tipY +
+                    " L " + tipX + " " + tipY;
+          return { d, tipX, tipY, head: 7, ux: -1, uy: 0 };   // arrowhead pointing left
+        }
+      }
+      return riseTo(a, n, sx, sy, note, anchor);
+    }
   });
 
   // X, right margin; arrow exits the note's left edge and curls in to the glyph.
